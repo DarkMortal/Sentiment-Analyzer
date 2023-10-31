@@ -2,18 +2,17 @@
 ## Setting up Virtual Environment in Python
 - Install **virtualenv** if not installed already
 
-    pip3 install virtualenv
-
+        pip3 install virtualenv
 - Create the **Virtual Environment**
 
-    virtualenv venv
+        virtualenv venv
 - Activate the **Virtual Environment**
 
-    source venv/bin/activate
+        source venv/bin/activate
 ## Installing Dependencies
 - Get dependencies
 
-    pip3 freeze >> requirements.txt
+        pip3 freeze >> requirements.txt
 - Install dependencies
 
-    pip3 install -r requirements.txt
+        pip3 install -r requirements.txt
