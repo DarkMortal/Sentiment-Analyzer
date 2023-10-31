@@ -1,34 +1,19 @@
-import string
-from collections import Counter
-import matplotlib.pyplot as plt
+import streamlit as st
+from packages.analyzer import Analyzer
+from packages.qna import questions, answers
 
-# text pre-processing
-text = open('./data/read.txt',encoding='utf-8').read()
-lower_case = text.lower()
-cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation))
-tokenized_words = cleaned_text.split()
+anal = Analyzer()
 
-# load stop-words
-stop_words = []
-with open('./data/stop_words.txt') as file:
-    for line in file:
-        words = line.split(',')
-        stop_words.append(words)
+def click_handler(text):
+    if len(text) < 50:
+        st.warning('Input must be atleast 50 characters long', icon="⚠️")
+    else:
+        st.pyplot(anal.analyze(text))
 
-# remove stop-words
-tokenized_words = list(filter(lambda w: w not in stop_words, tokenized_words))
-
-emotion_list = []
-with open('./data/emotion.txt') as file:
-    for line in file :
-        clear_line = line.replace('\n','').replace(',','').replace("'",'').strip()
-        word, emotion = clear_line.split(':')
-
-        if word in tokenized_words:
-            emotion_list.append(emotion)
-
-w = Counter(emotion_list)
-fig, ax1 = plt.subplots()
-ax1.bar(w.keys(),w.values())
-fig.autofmt_xdate()
-plt.savefig('./results/graph.png')
+st.title("Sentiment Analyzer")
+input1 = st.text_area(questions[0], value = answers[0], max_chars = 250)
+if st.button('Analyze', key = 1): click_handler(input1)
+input2 = st.text_area(questions[1], value = answers[1], max_chars = 250)
+if st.button('Analyze', key = 2): click_handler(input2)
+input3 = st.text_area(questions[2], value = answers[2], max_chars = 250)
+if st.button('Analyze', key = 3): click_handler(input3)
