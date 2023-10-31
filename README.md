@@ -16,3 +16,7 @@
 - Install dependencies
 
         pip3 install -r requirements.txt
+## Launching the application
+- To start the application
+
+        streamlit run main.py
