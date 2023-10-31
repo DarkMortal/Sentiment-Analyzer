@@ -11,9 +11,6 @@ def click_handler(text):
         st.pyplot(anal.analyze(text))
 
 st.title("Sentiment Analyzer")
-input1 = st.text_area(questions[0], value = answers[0], max_chars = 250)
-if st.button('Analyze', key = 1): click_handler(input1)
-input2 = st.text_area(questions[1], value = answers[1], max_chars = 250)
-if st.button('Analyze', key = 2): click_handler(input2)
-input3 = st.text_area(questions[2], value = answers[2], max_chars = 250)
-if st.button('Analyze', key = 3): click_handler(input3)
+for i in range(len(questions)):
+    input = st.text_area(questions[i], value = answers[i], max_chars = 250)
+    if st.button('Analyze', key = i): click_handler(input)
