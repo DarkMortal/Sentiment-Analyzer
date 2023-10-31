@@ -1,6 +1,6 @@
 import streamlit as st
-from packages.analyzer import Analyzer
-from packages.qna import questions, answers
+from modules.analyzer import Analyzer
+from modules.qna import questions, answers
 
 anal = Analyzer()
 
@@ -10,7 +10,7 @@ def click_handler(text):
     else:
         st.pyplot(anal.analyze(text))
 
-st.title("Sentiment Analyzer 2")
+st.title("Sentiment Analyzer")
 for i in range(len(questions)):
     input = st.text_area(questions[i], value = answers[i], max_chars = 250)
     if st.button('Analyze', key = i): click_handler(input)
