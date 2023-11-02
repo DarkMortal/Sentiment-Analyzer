@@ -1,6 +1,7 @@
 import string
 from collections import Counter
 import matplotlib.pyplot as plt
+from re import compile, UNICODE as ARGS
 
 class Analyzer:
 
@@ -14,10 +15,18 @@ class Analyzer:
                 words = line.split(',')
                 self.stop_words.append(words)
 
+        self.emoji_filter = compile("["
+        u"\U0001F600-\U0001F64F"  # emoticons
+        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+        u"\U0001F680-\U0001F6FF"  # transport & map symbols
+        u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                           "]+", flags = ARGS)
+
     def analyze(self, text):
 
         # text pre-processing
         lower_case = text.lower()
+        lower_case = self.emoji_filter.sub(r'', lower_case)
         cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation))
         tokenized_words = cleaned_text.split()
 
@@ -31,10 +40,11 @@ class Analyzer:
                 word, emotion = clear_line.split(':')
 
                 if word in tokenized_words:
-                    emotion_list.append(emotion)
+                    for i in range(tokenized_words.count(word)):
+                        emotion_list.append(emotion)
 
-        w = Counter(emotion_list)
-        fig, ax1 = plt.subplots()
-        ax1.bar(w.keys(),w.values())
-        fig.autofmt_xdate()
-        return fig
+        emotion_list = Counter(emotion_list)
+        figure, axis = plt.subplots()
+        axis.bar(emotion_list.keys(), emotion_list.values())
+        figure.autofmt_xdate()
+        return figure
