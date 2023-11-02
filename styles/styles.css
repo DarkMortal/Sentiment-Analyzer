@@ -23,6 +23,10 @@ textarea {
     height: 100px;
 }
 
+[data-testid=stSidebar] {
+    background-color: #012148;
+}
+
 button[type=submit] {
     background-color: #228be6;
     color: white;
