@@ -37,7 +37,7 @@ with st.sidebar:
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Your email" required />
             <textarea name="message" placeholder="Please enter your valuable feedback"></textarea>
-            <button type="submit">Send</button>
+            <button type="submit">Share</button>
         </form>
     """, unsafe_allow_html = True)
 
