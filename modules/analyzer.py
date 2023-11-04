@@ -3,6 +3,8 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from re import compile, UNICODE as ARGS
 
+graphColor = (31.0/255.0, 117.0/255.0, 254.0/255.0, 1)
+
 class Analyzer:
 
     def __init__(self):
@@ -16,11 +18,11 @@ class Analyzer:
                 self.stop_words.append(words)
 
         self.emoji_filter = compile("["
-        u"\U0001F600-\U0001F64F"  # emoticons
-        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-        u"\U0001F680-\U0001F6FF"  # transport & map symbols
-        u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-                           "]+", flags = ARGS)
+            u"\U0001F600-\U0001F64F"  # emoticons
+            u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+            u"\U0001F680-\U0001F6FF"  # transport & map symbols
+            u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+        "]+", flags = ARGS)
 
     def analyze(self, text):
 
@@ -45,6 +47,10 @@ class Analyzer:
 
         emotion_list = Counter(emotion_list)
         figure, axis = plt.subplots()
-        axis.bar(emotion_list.keys(), emotion_list.values())
+        axis.bar(
+            emotion_list.keys(),
+            emotion_list.values(),
+            color = graphColor
+        )
         figure.autofmt_xdate()
         return figure
