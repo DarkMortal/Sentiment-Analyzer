@@ -3,8 +3,6 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from re import compile, UNICODE as ARGS
 
-graphColor = (31.0/255.0, 117.0/255.0, 254.0/255.0, 1)
-
 class Analyzer:
 
     def __init__(self):
@@ -24,7 +22,7 @@ class Analyzer:
             u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
         "]+", flags = ARGS)
 
-    def analyze(self, text):
+    def analyze(self, text, graphColor, isHorizontal, showAxes):
 
         # text pre-processing
         lower_case = text.lower()
@@ -47,10 +45,23 @@ class Analyzer:
 
         emotion_list = Counter(emotion_list)
         figure, axis = plt.subplots()
-        axis.bar(
-            emotion_list.keys(),
-            emotion_list.values(),
+        
+        if isHorizontal: axis.barh(
+            list(emotion_list.keys()),
+            list(emotion_list.values()),
             color = graphColor
         )
+        else: axis.bar(
+            list(emotion_list.keys()),
+            list(emotion_list.values()),
+            color = graphColor
+        )
+        if showAxes:
+            if isHorizontal:
+                plt.ylabel("Emotions")
+                plt.xlabel("Occurences")
+            else:
+                plt.xlabel("Emotions")
+                plt.ylabel("Occurences")
         figure.autofmt_xdate()
         return figure
