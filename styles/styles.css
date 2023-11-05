@@ -4,7 +4,7 @@ li {
 
 .stButton button {
     width: 100%;
-    background-color: #e62222;
+    background-color: #f84848;
     color: white;
     font-weight: bolder;
 }
@@ -14,6 +14,10 @@ li {
     color: white;
     border: none;
     outline: none;
+}
+
+.stButton button p {
+    font-weight: bolder;
 }
 
 input[type=text],
