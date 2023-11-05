@@ -11,9 +11,12 @@ li {
 
 .stButton button:hover {
     background-color: #d62020;
-    color: white;
     border: none;
     outline: none;
+}
+
+.stButton button:hover p {
+    color: white;
 }
 
 .stButton button p {
