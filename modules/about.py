@@ -3,20 +3,22 @@ import streamlit as st
 def about():
     st.header("Team members")
     st.markdown("""
-    <style>.list li {font-size: 1.3rem;}</style>
+    <style>
+        .list { margin-bottom: -10px; }
+        .list li h5 { margin: -7px; }
+    </style>
     <ul class="list">
-    <li>Ankita Das</li>
-    <li>Aishika Datta</li>
-    <li>Rohit Shaw</li>
-    <li>Saptarshi Dey</li>
-    <li>Arkoprabho Dey</li>
-    <li>Chandrabha Chatterjee</li>
+    <li><h5>Ankita Das</h5></li>
+    <li><h5>Aishika Datta</h5></li>
+    <li><h5>Rohit Shaw</h5></li>
+    <li><h5>Saptarshi Dey</h5></li>
+    <li><h5>Arkoprabho Dey</h5></li>
+    <li><h5>Chandrabha Chatterjee</h5></li>
     </ul>""", unsafe_allow_html=True)
 
-    # st.header("Share Feedback")
+    st.header("Share Feedback")
     st.markdown("""
         <form action="https://formsubmit.co/dragonbeast.saiyan@gmail.com" method="POST">
-            <h2 style="color: #111827;">Share Feedback</h2>
             <input type="hidden" name="_captcha" value="true" />
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Your email" required />

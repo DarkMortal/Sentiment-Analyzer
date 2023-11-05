@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu as menu
 from modules.about import about
 from modules.home import home
-from modules.auxillary import  load_css
+from modules.auxillary import load_css
 
 st.set_page_config(
     page_title = 'Synthesized Infinity',

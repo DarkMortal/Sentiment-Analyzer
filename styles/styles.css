@@ -1,33 +1,27 @@
 li {
     font-weight: bold;
 }
-
 .stButton button {
     width: 100%;
     background-color: #f84848;
     color: white;
     font-weight: bolder;
 }
-
 .stButton button:hover {
     background-color: #d62020;
     border: none;
     outline: none;
 }
-
 .stButton button:hover p {
     color: #eceff4;
 }
-
 .stButton button p {
     font-weight: bolder;
     color: #eceff4;
 }
-
 .stButton button:focus p {
     color: #eceff4;
 }
-
 input[type=text],
 input[type=email],
 textarea {
@@ -45,23 +39,18 @@ textarea {
     height: 100px;
     font-weight: bold;
 }
-
 form {
     background-color: #a5d8ff;
-    padding: 20px;
-    padding-top: 0px;
+    padding: 15px;
 }
-
 [data-testid=stSidebar] {
     background-color: #012148;
     color: white;
 }
-
 [data-testid=stSidebar] h1, [data-testid=stSidebar] p {
     color: white;
     font-weight: bolder;
 }
-
 ul {
     font-size: 1.2rem;
 }
@@ -72,7 +61,6 @@ ul {
 .reportview-container .main .block-container {
     padding-top: -1rem;
 }
-
 button[type=submit] {
     background-color: #228be6;
     color: white;
@@ -83,11 +71,9 @@ button[type=submit] {
     width: 100%;
     font-weight: bolder;
 }
-
 button[type=submit]:hover {
     background-color: #1977c9;
 }
-
 button[type=submit]:focus {
     outline: none;
     border: none;
