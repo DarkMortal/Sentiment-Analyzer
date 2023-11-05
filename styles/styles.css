@@ -4,6 +4,16 @@ li {
 
 .stButton button {
     width: 100%;
+    background-color: #e62222;
+    color: white;
+    font-weight: bolder;
+}
+
+.stButton button:hover {
+    background-color: #d62020;
+    color: white;
+    border: none;
+    outline: none;
 }
 
 input[type=text],
@@ -23,13 +33,31 @@ textarea {
     height: 100px;
 }
 
+form{
+    background-color: #2D3647;
+    border-radius: 5px;
+    padding: 12px;
+}
+
 [data-testid=stSidebar] {
     background-color: #012148;
     color: white;
 }
 
-[data-testid=stSidebar] h2 {
+[data-testid=stSidebar] h1, [data-testid=stSidebar] p {
     color: white;
+    font-weight: bolder;
+}
+
+ul {
+    font-size: 1.2rem;
+}
+
+.reportview-container .sidebar-content {
+    padding-top: 0rem;
+}
+.reportview-container .main .block-container {
+    padding-top: -1rem;
 }
 
 button[type=submit] {
@@ -44,5 +72,5 @@ button[type=submit] {
 }
 
 button[type=submit]:hover {
-    background-color: #1c7ed6;
+    background-color: #1977c9;
 }

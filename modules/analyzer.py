@@ -22,7 +22,7 @@ class Analyzer:
             u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
         "]+", flags = ARGS)
 
-    def analyze(self, text, graphColor, isHorizontal, showAxes):
+    def analyze(self, text, graphOptions):
 
         # text pre-processing
         lower_case = text.lower()
@@ -44,20 +44,34 @@ class Analyzer:
                         emotion_list.append(emotion)
 
         emotion_list = Counter(emotion_list)
-        figure, axis = plt.subplots()
-        
-        if isHorizontal: axis.barh(
+        figure, axis = plt.subplots(
+            facecolor = graphOptions.get('faceColor'),
+        )
+        if graphOptions.get('isHorizontal'): axis.barh(
             list(emotion_list.keys()),
             list(emotion_list.values()),
-            color = graphColor
+            color = graphOptions.get('graphColor')
         )
         else: axis.bar(
             list(emotion_list.keys()),
             list(emotion_list.values()),
-            color = graphColor
+            color = graphOptions.get('graphColor')
         )
-        if showAxes:
-            if isHorizontal:
+
+        # update graph colors
+        axis.set_facecolor(graphOptions.get('background'))
+        axis.tick_params(axis = 'x', colors = graphOptions.get('labelColor'))
+        axis.tick_params(axis = 'y', colors = graphOptions.get('labelColor'))
+
+        # update graph borders
+        axis.spines['bottom'].set_color(graphOptions.get('borderColor'))
+        axis.spines['top'].set_color(graphOptions.get('borderColor'))
+        axis.spines['right'].set_color(graphOptions.get('borderColor'))
+        axis.spines['left'].set_color(graphOptions.get('borderColor'))
+
+        # axis options
+        if graphOptions.get('showAxes'):
+            if graphOptions.get('isHorizontal'):
                 plt.ylabel("Emotions")
                 plt.xlabel("Occurences")
             else:
