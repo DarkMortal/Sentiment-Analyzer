@@ -16,11 +16,16 @@ li {
 }
 
 .stButton button:hover p {
-    color: white;
+    color: #eceff4;
 }
 
 .stButton button p {
     font-weight: bolder;
+    color: #eceff4;
+}
+
+.stButton button:focus p {
+    color: #eceff4;
 }
 
 input[type=text],
