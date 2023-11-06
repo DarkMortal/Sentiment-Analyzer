@@ -4,6 +4,9 @@ ul {
 p {
     margin-bottom: 0px;
 }
+h2 {
+    font-weight: bolder;
+}
 hr {
     height: 10px;
     border: none;
@@ -83,10 +86,12 @@ button[type=submit]:focus {
     outline: none;
     border: none;
 }
-[data-testid=stWidgetLabel] [data-testid=stMarkdownContainer] {
+[data-testid=stWidgetLabel]
+[data-testid=stMarkdownContainer] {
     width: 100%;
 }
-[data-testid=stWidgetLabel] [data-testid=stMarkdownContainer] p {
+[data-testid=stWidgetLabel]
+[data-testid=stMarkdownContainer] p {
     font-size: 15.5px;
     width: 100%;
 }
