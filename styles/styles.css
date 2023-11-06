@@ -1,6 +1,15 @@
 li {
     font-weight: bold;
 }
+p {
+    margin-bottom: 0px;
+}
+hr {
+    height: 10px;
+    border: none;
+    background-color: #4c566a;
+    margin: 0px;
+}
 .stButton button {
     width: 100%;
     background-color: #f84848;
@@ -44,11 +53,11 @@ form {
     padding: 15px;
 }
 [data-testid=stSidebar] {
-    background-color: #012148;
-    color: white;
+    background-color: #64B5F6;
+    color: #111827;
 }
 [data-testid=stSidebar] h1, [data-testid=stSidebar] p {
-    color: white;
+    color: #111827;
     font-weight: bolder;
 }
 ul {

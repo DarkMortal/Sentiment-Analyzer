@@ -22,7 +22,7 @@ class Analyzer:
             u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
         "]+", flags = ARGS)
 
-    def analyze(self, text, graphOptions):
+    def analyze(self, text):
 
         # text pre-processing
         lower_case = text.lower()
@@ -43,18 +43,20 @@ class Analyzer:
                     for i in range(tokenized_words.count(word)):
                         emotion_list.append(emotion)
 
-        emotion_list = Counter(emotion_list)
+        return Counter(emotion_list)
+
+    def generatePlot(self, data, graphOptions):
         figure, axis = plt.subplots(
             facecolor = graphOptions.get('faceColor'),
         )
         if graphOptions.get('isHorizontal'): axis.barh(
-            list(emotion_list.keys()),
-            list(emotion_list.values()),
+            list(data.keys()),
+            list(data.values()),
             color = graphOptions.get('graphColor')
         )
         else: axis.bar(
-            list(emotion_list.keys()),
-            list(emotion_list.values()),
+            list(data.keys()),
+            list(data.values()),
             color = graphOptions.get('graphColor')
         )
 

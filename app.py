@@ -19,7 +19,7 @@ selected = menu(
     options = ["Home", "About"],
     icons = ["house-door-fill", "info-square-fill"],
     orientation = 'horizontal',
-    default_index = 0
+    default_index = 0,
 )
 
 if selected == "Home": home()
