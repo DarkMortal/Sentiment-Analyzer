@@ -1,14 +1,8 @@
-li {
-    font-weight: bold;
-}
-p {
-    margin-bottom: 0px;
-}
 ul {
     font-size: 1.2rem;
 }
-label {
-    width: 100%;
+p {
+    margin-bottom: 0px;
 }
 hr {
     height: 10px;
@@ -88,4 +82,11 @@ button[type=submit]:hover {
 button[type=submit]:focus {
     outline: none;
     border: none;
+}
+[data-testid=stWidgetLabel] [data-testid=stMarkdownContainer] {
+    width: 100%;
+}
+[data-testid=stWidgetLabel] [data-testid=stMarkdownContainer] p {
+    font-size: 15.5px;
+    width: 100%;
 }
