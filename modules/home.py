@@ -52,4 +52,4 @@ def home():
         if st.button('Analyze', key = f'button1{i}'):
             if generate == 'Bar Graph':
                 click_handler(input, currentGraphConfig)
-            if generate == "Javascipt Object Notation (JSON)": json_handler(input)
+            if generate == "Javascript Object Notation (JSON)": json_handler(input)
