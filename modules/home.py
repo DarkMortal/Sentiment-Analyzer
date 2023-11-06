@@ -17,7 +17,7 @@ def click_handler(text, graphConfig):
 def json_handler(text):
     data = anal.analyze(text).items()
     json = [{"emotion": key.strip(),"occurence": value} for key,value in data]
-    json = js.dumps(json, indent=4)
+    json = js.dumps(json, indent = 3)
     st.code(json, language = 'json', line_numbers = True)
 
 def home():

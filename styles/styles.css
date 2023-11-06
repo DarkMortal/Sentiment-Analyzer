@@ -4,6 +4,9 @@ li {
 p {
     margin-bottom: 0px;
 }
+label {
+    width: 100%;
+}
 hr {
     height: 10px;
     border: none;
