@@ -11,12 +11,14 @@ hr {
     height: 10px;
     border: none;
     background-color: #4c566a;
-    margin: 0px;
+    margin: auto;
+    width: 90%;
+    margin-bottom: 10px;
 }
 .stButton button {
     width: 100%;
     background-color: #f84848;
-    color: white;
+    color: #eceff4;
     font-weight: bolder;
 }
 .stButton button:hover {

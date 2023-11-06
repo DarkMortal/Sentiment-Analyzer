@@ -12,13 +12,15 @@ def click_handler(text, graphConfig):
     else:
         data = anal.analyze(text)
         st.pyplot(anal.generatePlot(data, graphConfig))
-        st.divider()
 
 def json_handler(text):
-    data = anal.analyze(text).items()
-    json = [{"emotion": key.strip(),"occurence": value} for key,value in data]
-    json = js.dumps(json, indent = 3)
-    st.code(json, language = 'json', line_numbers = True)
+    if len(text) < 50:
+        st.warning('Input must be atleast 50 characters long', icon="⚠️")
+    else:
+        data = anal.analyze(text).items()
+        json = [{"emotion": key.strip(),"occurence": value} for key,value in data]
+        json = js.dumps(json, indent = 3)
+        st.code(json, language = 'json', line_numbers = True)
 
 def home():
     with st.sidebar:
@@ -53,3 +55,4 @@ def home():
             if generate == 'Bar Graph':
                 click_handler(input, currentGraphConfig)
             if generate == "Javascript Object Notation (JSON)": json_handler(input)
+        st.divider()
