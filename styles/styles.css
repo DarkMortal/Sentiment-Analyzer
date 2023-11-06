@@ -4,6 +4,9 @@ li {
 p {
     margin-bottom: 0px;
 }
+ul {
+    font-size: 1.2rem;
+}
 label {
     width: 100%;
 }
@@ -63,10 +66,6 @@ form {
     color: #111827;
     font-weight: bolder;
 }
-ul {
-    font-size: 1.2rem;
-}
-
 .reportview-container .sidebar-content {
     padding-top: 0rem;
 }
