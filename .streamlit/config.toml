@@ -15,4 +15,4 @@ fileWatcherType = "watchdog"
 cookieSecret = "c76cb40c6d517cd7c2fd6cd604ea32793c66acb5d300a19b7a601f25b0231938"
 
 [browser]
-gatherUsageStats = true
+gatherUsageStats = false
