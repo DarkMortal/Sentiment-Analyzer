@@ -10,7 +10,10 @@ hr {
     background-color: #4c566a;
     margin: auto;
     width: 90%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+img {
+    border-radius: 5px;
 }
 .stButton button {
     width: 100%;

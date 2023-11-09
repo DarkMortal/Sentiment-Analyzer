@@ -19,4 +19,4 @@
 ## Launching the application
 - To start the application
 
-        streamlit run main.py
+        streamlit run app.py
