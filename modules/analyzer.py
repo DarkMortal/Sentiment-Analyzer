@@ -1,5 +1,4 @@
 import string
-from collections import Counter
 import matplotlib.pyplot as plt
 from re import compile, UNICODE as ARGS
 
@@ -33,17 +32,18 @@ class Analyzer:
         # remove stop-words
         tokenized_words = list(filter(lambda w: w not in self.stop_words, tokenized_words))
 
-        emotion_list = []
+        emotion_list = {}
         with open('./data/emotion.txt') as file:
             for line in file :
                 clear_line = line.replace('\n','').replace(',','').replace("'",'').strip()
                 word, emotion = clear_line.split(':')
 
                 if word in tokenized_words:
-                    for i in range(tokenized_words.count(word)):
-                        emotion_list.append(emotion)
+                    if emotion in emotion_list.keys():
+                        emotion_list[emotion] += tokenized_words.count(word)
+                    else: emotion_list[emotion] = tokenized_words.count(word)
 
-        return Counter(emotion_list)
+        return emotion_list
 
     def generatePlot(self, data, graphOptions):
         figure, axis = plt.subplots(
@@ -64,6 +64,12 @@ class Analyzer:
         axis.set_facecolor(graphOptions.get('background'))
         axis.tick_params(axis = 'x', colors = graphOptions.get('labelColor'))
         axis.tick_params(axis = 'y', colors = graphOptions.get('labelColor'))
+
+        axis.yaxis.set_ticks(list(range(
+            int(min(data.values())),
+            int(max(data.values()))+1,
+            1
+        )))
 
         # update graph borders
         axis.spines['bottom'].set_color(graphOptions.get('borderColor'))
