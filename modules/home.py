@@ -33,6 +33,7 @@ def home():
         faceColor = st.color_picker("Plot background color", '#f0f8ff')
         backColor = st.color_picker("Graph background color", '#ffffff')
         axes = st.checkbox("Show axis names")
+        show_pge = st.checkbox("Show percentage", value = True)
         horizontal_graph = st.checkbox("Horizontal Graph")
 
     st.title("Sentiment Analyzer")
@@ -48,7 +49,8 @@ def home():
             'background': backColor,
             'faceColor': faceColor,
             'labelColor': labelColor,
-            'borderColor': borderColor
+            'borderColor': borderColor,
+            'showP': show_pge
         }
         generate = st.selectbox(
             'Choose output format',

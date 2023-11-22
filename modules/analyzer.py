@@ -46,20 +46,25 @@ class Analyzer:
         return emotion_list
 
     def generatePlot(self, data, graphOptions):
+        graph = None
+
         figure, axis = plt.subplots(
             facecolor = graphOptions.get('faceColor'),
         )
-        if graphOptions.get('isHorizontal'): axis.barh(
-            list(data.keys()),
-            list(data.values()),
-            color = graphOptions.get('graphColor')
+        if graphOptions.get('isHorizontal'):
+            graph = axis.barh(
+                list(data.keys()),
+                list(data.values()),
+                color = graphOptions.get('graphColor')
         )
-        else: axis.bar(
+        else: graph = axis.bar(
             list(data.keys()),
             list(data.values()),
             color = graphOptions.get('graphColor')
         )
 
+        total = sum(data.values())
+        
         # update graph colors
         axis.set_facecolor(graphOptions.get('background'))
         axis.tick_params(axis = 'x', colors = graphOptions.get('labelColor'))
@@ -67,8 +72,7 @@ class Analyzer:
 
         axis.yaxis.set_ticks(list(range(
             int(min(data.values())),
-            int(max(data.values()))+1,
-            1
+            int(max(data.values())) + 1, 1
         )))
 
         # update graph borders
@@ -86,4 +90,19 @@ class Analyzer:
                 plt.xlabel("Emotions")
                 plt.ylabel("Occurences")
         figure.autofmt_xdate()
+
+        if graphOptions.get('showP'):
+            i = 0
+            for p in graph:
+                width = p.get_width()
+                height = p.get_height()
+                x, y = p.get_xy()
+                val = list(data.values())[i]
+                plt.text(x + width / 2,
+                        y + height * 1.01,
+                        f"{round(val * 100 / total, 2)}%",
+                        ha = "center",
+                        weight = "bold"
+                        )
+                i += 1
         return figure
