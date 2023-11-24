@@ -33,6 +33,7 @@ def home():
         faceColor = st.color_picker("Plot background color", '#f0f8ff')
         backColor = st.color_picker("Graph background color", '#ffffff')
         axes = st.checkbox("Show axis names")
+        divs = st.checkbox("Show divisions", value = True)
         show_pge = st.checkbox("Show percentage", value = True)
         horizontal_graph = st.checkbox("Horizontal Graph")
 
@@ -50,7 +51,8 @@ def home():
             'faceColor': faceColor,
             'labelColor': labelColor,
             'borderColor': borderColor,
-            'showP': show_pge
+            'showP': show_pge,
+            'isAxis': divs
         }
         generate = st.selectbox(
             'Choose output format',

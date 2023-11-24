@@ -56,12 +56,21 @@ class Analyzer:
                 list(data.keys()),
                 list(data.values()),
                 color = graphOptions.get('graphColor')
-        )
-        else: graph = axis.bar(
-            list(data.keys()),
-            list(data.values()),
-            color = graphOptions.get('graphColor')
-        )
+            )
+            axis.xaxis.set_ticks(list(range(
+                int(min(data.values())),
+                int(max(data.values())) + 1, 1
+            )))
+        else:
+            graph = axis.bar(
+                list(data.keys()),
+                list(data.values()),
+                color = graphOptions.get('graphColor')
+            )
+            axis.yaxis.set_ticks(list(range(
+                int(min(data.values())),
+                int(max(data.values())) + 1, 1
+            )))
 
         total = sum(data.values())
         
@@ -69,11 +78,6 @@ class Analyzer:
         axis.set_facecolor(graphOptions.get('background'))
         axis.tick_params(axis = 'x', colors = graphOptions.get('labelColor'))
         axis.tick_params(axis = 'y', colors = graphOptions.get('labelColor'))
-
-        axis.yaxis.set_ticks(list(range(
-            int(min(data.values())),
-            int(max(data.values())) + 1, 1
-        )))
 
         # update graph borders
         axis.spines['bottom'].set_color(graphOptions.get('borderColor'))
@@ -90,6 +94,10 @@ class Analyzer:
                 plt.xlabel("Emotions")
                 plt.ylabel("Occurences")
         figure.autofmt_xdate()
+
+        # grid options
+        plt.grid(visible = graphOptions.get('isAxis'),
+                 axis = ('x' if graphOptions.get('isHorizontal') else 'y'))
 
         if graphOptions.get('showP'):
             i = 0
