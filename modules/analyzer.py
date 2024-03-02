@@ -1,5 +1,6 @@
 import string
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 from re import compile, UNICODE as ARGS
 
 class Analyzer:

@@ -5,6 +5,7 @@ from modules.analyzer import Analyzer
 from modules.auxillary import questions, answers
 
 anal = Analyzer()
+answers_array = []
 
 def click_handler(text, graphConfig):
     if len(text) < 50:
@@ -36,7 +37,17 @@ def home():
         divs = st.checkbox("Show divisions", value = True)
         show_pge = st.checkbox("Show percentage", value = True)
         horizontal_graph = st.checkbox("Horizontal Graph")
-
+    currentGraphConfig = {
+        'graphColor': color,
+        'isHorizontal': horizontal_graph,
+        'showAxes': axes,
+        'background': backColor,
+        'faceColor': faceColor,
+        'labelColor': labelColor,
+        'borderColor': borderColor,
+        'showP': show_pge,
+        'isAxis': divs
+    }
     st.title("Sentiment Analyzer")
     for i in range(len(questions)):
         input = st.text_area(
@@ -54,6 +65,7 @@ def home():
             'showP': show_pge,
             'isAxis': divs
         }
+        answers_array.append(input)
         generate = st.selectbox(
             'Choose output format',
             ['Bar Graph','Javascript Object Notation (JSON)'],
@@ -61,7 +73,18 @@ def home():
             # label_visibility = 'collapsed'
         )
         if st.button('Analyze', key = f'button1{i}'):
-            if generate == 'Bar Graph':
-                click_handler(input, currentGraphConfig)
+            if generate == 'Bar Graph': click_handler(input, currentGraphConfig)
             if generate == "Javascript Object Notation (JSON)": json_handler(input)
         st.divider()
+    st.header("Final report generation")
+    generate = st.selectbox(
+            'Choose output format',
+            ['Bar Graph','Javascript Object Notation (JSON)'],
+            key = "final_report_box",
+            # label_visibility = 'collapsed'
+    )
+    if st.button('Analyze', key = "final_report_button"):
+        if generate == 'Bar Graph': click_handler(' '.join(answers_array), currentGraphConfig)
+        if generate == "Javascript Object Notation (JSON)": json_handler(' '.join(answers_array))
+    answers_array.clear()
+    st.divider()
